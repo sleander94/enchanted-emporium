@@ -1,0 +1,24 @@
+extends layout 
+
+block content   
+    h1= title 
+    form(action="" method="POST") 
+      div 
+        label(for="name") Name: 
+        input#name(type="text", placeholder="Name of item" name="name" required="true" value=(undefined===item ? "" : item.name) ) 
+      div 
+        label(for="description") Description: 
+        textarea#description(name="description" cols="30" rows="10" required="true" value=(undefined===item ? "" : item.description)) 
+      div 
+        label(for="price") Price (GP): 
+        input#price(type="number" placeholder="Unit price of item" name="price" required="true" value=(undefined===item ? "" : item.price)) 
+      div 
+        label(for="category") Category: 
+        select#category(type="select" name="category" required='true') 
+          for category in categories
+              option(value=category._id) #{category.name}
+      button#submit(type="submit") Create Item
+    if errors 
+      ul 
+        for error in errors 
+          li= error.msg
