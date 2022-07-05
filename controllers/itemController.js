@@ -12,6 +12,9 @@ exports.index = function (req, res) {
       iteminstance_count: function (callback) {
         Iteminstance.countDocuments({}, callback);
       },
+      categories: function (callback) {
+        Category.find({}, callback);
+      },
     },
     function (err, results) {
       res.render('index', {
@@ -29,8 +32,8 @@ exports.item_info = function (req, res, next) {
       item: function (callback) {
         Item.findById(req.params.id).populate('category').exec(callback);
       },
-      item_instance: function (callback) {
-        Iteminstance.countDocuments({ item: req.params.id }).exec(callback);
+      stock_count: function (callback) {
+        Iteminstance.countDocuments({ item: req.params.id }, callback);
       },
     },
     function (err, results) {
@@ -44,7 +47,7 @@ exports.item_info = function (req, res, next) {
       }
       res.render('item_info', {
         title: results.item.name,
-        item: results.item,
+        data: results,
       });
     }
   );
@@ -53,13 +56,13 @@ exports.item_info = function (req, res, next) {
 exports.items = function (req, res, next) {
   Item.find({})
     .sort({ price: 1 })
-    .exec(function (err, items) {
+    .exec(function (err, results) {
       if (err) {
         return next(err);
       }
       res.render('items', {
         title: 'All Items',
-        items: items,
+        data: results,
       });
     });
 };
