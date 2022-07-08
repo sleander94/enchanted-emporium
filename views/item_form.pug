@@ -8,7 +8,7 @@ block content
         input#name(type="text", placeholder="Name of item" name="name" required="true" value=(undefined===item ? "" : item.name) ) 
       div 
         label(for="description") Description: 
-        textarea#description(name="description" cols="30" rows="10" required="true" value=(undefined===item ? "" : item.description)) 
+        textarea#description(name="description" cols="30" rows="10" required="true")=undefined=== item ? "" : item.description
       div 
         label(for="price") Price (GP): 
         input#price(type="number" placeholder="Unit price of item" name="price" required="true" value=(undefined===item ? "" : item.price)) 
