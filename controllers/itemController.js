@@ -125,10 +125,55 @@ exports.item_create_post = [
   },
 ];
 
-exports.item_delete_get = function (req, res) {
-  res.send('Item delete get');
+exports.item_delete_get = function (req, res, next) {
+  async.parallel(
+    {
+      item: function (callback) {
+        Item.findById(req.params.id).exec(callback);
+      },
+      item_instances: function (callback) {
+        Iteminstance.find({ item: req.params.id }).exec(callback);
+      },
+    },
+    function (err, results) {
+      if (err) {
+        return next(err);
+      }
+      if (results.item === null) {
+        res.redirect('/emporium/items');
+      }
+      res.render('item_delete', {
+        title: 'Delete Item',
+        item: results.item,
+        item_instance: results.item_instances,
+      });
+    }
+  );
 };
 
-exports.item_delete_post = function (req, res) {
-  res.send('Item delete post');
+exports.item_delete_post = function (req, res, next) {
+  async.parallel(
+    {
+      item: function (callback) {
+        Item.findById(req.body.item_id).exec(callback);
+      },
+      item_instances: function (callback) {
+        Iteminstance.find({ item: req.body.item_id }).exec(callback);
+      },
+    },
+    function (err, results) {
+      if (err) {
+        return next(err);
+      }
+      if (results.item_instances.length > 0) {
+        Iteminstance.deleteMany({ item: req.body.item_id });
+      }
+      Item.findByIdAndDelete(req.body.item_id, function deleteItem(err) {
+        if (err) {
+          return next(err);
+        }
+        res.redirect('/emporium/items');
+      });
+    }
+  );
 };
