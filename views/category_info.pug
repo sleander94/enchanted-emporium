@@ -1,6 +1,7 @@
 extends layout 
 
 block content 
-  h1= data.category_info.name 
-  each item in data.items 
-    a(href=`/emporium/item/${item._id}`) !{item.name} | !{item.price}
+  div(class="items-list")
+    h2= data.category_info.name 
+    each item in data.items 
+      a(href=`/emporium/item/${item._id}`) !{item.name} | !{item.price}
