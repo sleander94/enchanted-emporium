@@ -1,7 +1,16 @@
 doctype html
-html
+html(lang='en')
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='/stylesheets/main.css')
   body
-    block content
+    nav
+      h1 Enchanted Emporium
+      div(class="nav-links")
+        a(href="/emporium") Home
+        a(href="/emporium/items") All items
+        a(href="/emporium/item/create") New Item   
+    section(id="content")
+      block content
