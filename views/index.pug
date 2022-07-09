@@ -1,5 +1,12 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title} this is a test blah
+  div(class="home")
+    h2 What is it that you seek?
+  
+    if err 
+      p Error getting shop content.
+  
+    div(class="shop-categories") 
+      each category in data.categories
+        a(href=`/emporium/categories/${category._id}`) !{category.name}    
