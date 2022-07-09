@@ -177,3 +177,77 @@ exports.item_delete_post = function (req, res, next) {
     }
   );
 };
+
+exports.item_update_get = function (req, res, next) {
+  async.parallel(
+    {
+      item: function (callback) {
+        Item.findById(req.params.id).exec(callback);
+      },
+      categories: function (callback) {
+        Category.find({}, callback);
+      },
+    },
+    function (err, results) {
+      if (err) {
+        return next(err);
+      }
+      if (results.item === null) {
+        var err = new Error('Item not found');
+        err.status = 404;
+        return next(err);
+      }
+      res.render('item_form', {
+        title: 'Update Item',
+        categories: results.categories,
+        item: results.item,
+      });
+    }
+  );
+};
+
+exports.item_update_post = [
+  body('name', 'Name is required').trim().isLength({ min: 1 }).escape(),
+  body('description', 'Description is required')
+    .trim()
+    .isLength({ min: 1 })
+    .escape(),
+  body('price', 'Price must be an integer greater than 0')
+    .trim()
+    .isInt({ min: 1 })
+    .escape(),
+
+  (req, res, next) => {
+    const errors = validationResult(req);
+
+    const item = new Item({
+      name: req.body.name,
+      description: req.body.description,
+      price: req.body.price,
+      category: req.body.category,
+      _id: req.params.id,
+    });
+
+    if (!errors.isEmpty()) {
+      Category.find({}).exec(function (err, results) {
+        if (err) {
+          return next(err);
+        }
+        res.render('item_form', {
+          title: 'Update Item',
+          categories: results,
+          item: item,
+          errors: errors.array(),
+        });
+      });
+      return;
+    } else {
+      Item.findByIdAndUpdate(req.params.id, item, {}, function (err, theitem) {
+        if (err) {
+          return next(err);
+        }
+        res.redirect(theitem.url);
+      });
+    }
+  },
+];
