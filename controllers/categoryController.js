@@ -7,7 +7,7 @@ exports.category_info = function (req, res, next) {
   async.parallel(
     {
       category_info: function (callback) {
-        Category.find({ _id: req.params.id }).exec(callback);
+        Category.findOne({ _id: req.params.id }).exec(callback);
       },
       items: function (callback) {
         Item.find({ category: req.params.id })
