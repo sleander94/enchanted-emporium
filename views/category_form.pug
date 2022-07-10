@@ -1,0 +1,13 @@
+extends layout 
+
+block content   
+    h2= title 
+    form(action="" method="POST") 
+      div(class="form-label") 
+        label(for="name") Name: 
+        input#name(type="text", placeholder="Name of category" name="name" required="true") 
+      button#submit(type="submit") Submit
+    if errors 
+      ul 
+        for error in errors 
+          li= error.msg
