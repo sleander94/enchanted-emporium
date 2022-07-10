@@ -64,6 +64,10 @@ exports.item_info_post = [
         iteminstance.save(function (err) {
           if (err) {
             return next(err);
+          } else if (i === req.body.quantity - 1) {
+            setTimeout(function () {
+              res.redirect(`/emporium/item/${req.params.id}`);
+            }, 200);
           }
         });
       }
@@ -71,18 +75,18 @@ exports.item_info_post = [
     if (req.body.quantity < 0) {
       for (let i = req.body.quantity; i < 0; i++) {
         Iteminstance.findOneAndRemove({ item: req.params.id }).exec(function (
-          err,
-          results
+          err
         ) {
           if (err) {
             return next(err);
+          } else if (i === -1) {
+            setTimeout(function () {
+              res.redirect(`/emporium/item/${req.params.id}`);
+            }, 200);
           }
         });
       }
     }
-    setTimeout(function () {
-      res.redirect(`/emporium/item/${req.params.id}`);
-    }, 500);
   },
 ];
 
