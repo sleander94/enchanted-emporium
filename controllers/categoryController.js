@@ -69,3 +69,12 @@ exports.category_create_post = [
     }
   },
 ];
+
+exports.category_delete_post = (req, res, next) => {
+  Category.findOneAndDelete({ _id: req.params.id }).exec(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect('/emporium');
+  });
+};
