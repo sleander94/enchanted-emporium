@@ -117,7 +117,7 @@ function createItems(cb) {
       },
       function (callback) {
         itemCreate(
-          'Thunderfury, Blessed Blad of the Windseeker',
+          'Thunderfury, Blessed Blade of the Windseeker',
           "The legendary sword once wielded by Thunderaan, Prince of Air. The prince, son of Al'Akir the Windlord, was attacked by Ragnaros the Firelord, in an attempt to heighten the already impressive power that the fire elemental held. Ragnaros succeeded; however, Thunderaan's power could not be completely taken into his form. What remained of Thunderaan was placed in a talisman of elemental binding, which was broken into two pieces.",
           949,
           categories[0],
