@@ -135,6 +135,7 @@ exports.item_create_post = [
       description: req.body.description,
       price: req.body.price,
       category: req.body.category,
+      image: req.file.filename,
     });
 
     if (!errors.isEmpty()) {

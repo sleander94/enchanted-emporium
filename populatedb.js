@@ -31,12 +31,13 @@ function categoryCreate(name, cb) {
   });
 }
 
-function itemCreate(name, description, price, category, cb) {
+function itemCreate(name, description, price, category, image, cb) {
   iteminfo = {
     name: name,
     description: description,
     price: price,
     category: category,
+    image: image,
   };
 
   var item = new Item(iteminfo);
@@ -103,6 +104,7 @@ function createItems(cb) {
           "Thori'dal, the Stars' Fury is a legendary bow of mysterious origins, infused with power from the Sunwell.",
           775,
           categories[0],
+          'thoridal_the_stars_fury.jpg',
           callback
         );
       },
@@ -112,6 +114,7 @@ function createItems(cb) {
           'A legendary mace that was created by the titans and gifted to the first Earthen king to create and bestow life to more Earthen. During the first war between the Earthen and the Iron Dwarves, the weapon was shattered into fragments, which were believed to be lost for many millennia.',
           1100,
           categories[0],
+          'valanyr_hammer_of_ancient_kings.jpg',
           callback
         );
       },
@@ -121,6 +124,7 @@ function createItems(cb) {
           "The legendary sword once wielded by Thunderaan, Prince of Air. The prince, son of Al'Akir the Windlord, was attacked by Ragnaros the Firelord, in an attempt to heighten the already impressive power that the fire elemental held. Ragnaros succeeded; however, Thunderaan's power could not be completely taken into his form. What remained of Thunderaan was placed in a talisman of elemental binding, which was broken into two pieces.",
           949,
           categories[0],
+          'thunderfury_blessed_blade_of_the_windseeker.jpg',
           callback
         );
       },
@@ -130,6 +134,7 @@ function createItems(cb) {
           'Long ago, when the World of Warcraft was created, one of the programmers put a sword called The Sword of a Thousand Truths into the game inventory. But the sword was considered to be too powerful for anyone to possess, so it was removed from the game and stored on a one gig flash drive. But it was foretold that one day players who could wield the sword might reveal themselves.',
           1337,
           categories[0],
+          'sword_of_a_thousand_truths.jpg',
           callback
         );
       },
@@ -139,6 +144,7 @@ function createItems(cb) {
           "The boomerang is a ranged weapon, and any creature proficient with the javelin is also proficient with this weapon. On a miss, a boomerang returns to the thrower's hand.",
           49,
           categories[0],
+          'boomerang.jpg',
           callback
         );
       },
@@ -148,6 +154,7 @@ function createItems(cb) {
           'This item appears to be a longsword hilt. While grasping the hilt, you can use a bonus action to cause a blade of pure radiance to spring into existence, or make the blade disappear. While the blade exists, this magic longsword has the finesse property. If you are proficient with shortswords or longswords, you are proficient with the sun blade.',
           325,
           categories[0],
+          'sunblade.jpg',
           callback
         );
       },
@@ -157,6 +164,7 @@ function createItems(cb) {
           'Curse. This axe is cursed, and becoming attuned to it extends the curse to you. As long as you remain cursed, you are unwilling to part with the axe, keeping it within reach at all times. You also have disadvantage on attack rolls with weapons other than this one, unless no foe is within 60 feet of you that you can see or hear. Whenever a hostile creature damages you while the axe is in your possession, you must succeed on a DC 15 Wisdom saving throw or go berserk. While berserk, you must use your action each round to attack the creature nearest to you with the axe. If you can make extra attacks as part of the Attack action, you use those extra attacks, moving to attack the next nearest creature after you fell your current target. If you have multiple possible targets, you attack one at random. You are berserk until you start your turn with no creatures within 60 feet of you that you can see or hear.',
           449,
           categories[0],
+          'berserker_axe.jpg',
           callback
         );
       },
@@ -166,6 +174,7 @@ function createItems(cb) {
           "You have resistance to nonmagical damage while you wear this armor. Additionally, you can use an action to make yourself immune to nonmagical damage for 10 minutes or until you are no longer wearing the armor. Once this special action is used, it can't be used again until the next dawn.",
           950,
           categories[1],
+          'armor_of_invulnerability.jpg',
           callback
         );
       },
@@ -175,6 +184,7 @@ function createItems(cb) {
           "While you're wearing this armor, you can speak its command word as an action to gain the effect of the etherealness spell, which last for 10 minutes or until you remove the armor or use an action to speak the command word again. This property of the armor can't be used again until the next dawn.",
           950,
           categories[1],
+          'plate_armor_of_etherealness.jpg',
           callback
         );
       },
@@ -184,6 +194,7 @@ function createItems(cb) {
           'While wearing this armor, you gain a +2 bonus to AC. In addition, if an effect moves you against your will along the ground, you can use your reaction to reduce the distance you are moved by up to 10 feet. Plate consists of shaped, interlocking metal plates to cover the entire body. A suit of plate includes gauntlets, heavy leather boots, a visored helmet, and thick layers of padding underneath the armor. Buckles and straps distribute the weight over the body.',
           599,
           categories[1],
+          'dwarven_plate.jpg',
           callback
         );
       },
@@ -193,6 +204,7 @@ function createItems(cb) {
           'Dragon scale mail is made of the scales of one kind of dragon. Sometimes dragons collect their cast-off scales and gift them to humanoids. Other times, hunters carefully skin and preserve the hide of a dead dragon. In either case, dragon scale mail is highly valued. While wearing this armor, you gain a +1 bonus to AC, you have advantage on saving throws against the Frightful Presence and breath weapons of dragons, and you have resistance to one damage type that is determined by the kind of a dragon that provided the scales.',
           830,
           categories[1],
+          'dragon_scale_mail.jpg',
           callback
         );
       },
@@ -202,6 +214,7 @@ function createItems(cb) {
           'When you drink this potion, you gain the effect of the clairvoyance spell. An eyeball bobs in this yellowish liquid but vanishes when the potion is opened.',
           99,
           categories[2],
+          'potion_of_clairvoyance.jpg',
           callback
         );
       },
@@ -211,6 +224,7 @@ function createItems(cb) {
           'When you drink this potion, you can cast the animal friendship spell (save DC 13) for 1 hour at will. Agitating this muddy liquid brings little bits into view: a fish scale, a hummingbird tongue, a cat claw, or a squirrel hair.',
           49,
           categories[2],
+          'potion_of_animal_friendship.jpg',
           callback
         );
       },
@@ -220,6 +234,7 @@ function createItems(cb) {
           "When you drink this potion, you gain a flying speed equal to your walking speed for 1 hour and can hover. If you're in the air when the potion wears off, you fall unless you have some other means of staying aloft. This potion's clear liquid floats at the top of its container and has cloudy white impurities drifting in it.",
           199,
           categories[2],
+          'potion_of_flying.jpg',
           callback
         );
       },
@@ -229,6 +244,7 @@ function createItems(cb) {
           "You regain hit points when you drink this potion. Whatever its potency, the potion's red liquid glimmers when agitated.",
           29,
           categories[2],
+          'potion_of_healing.jpg',
           callback
         );
       },
@@ -238,6 +254,7 @@ function createItems(cb) {
           "When you drink this potion, you gain the effect of the haste spell for 1 minute (no concentration required). The potion's yellow fluid is streaked with black and swirls on its own.",
           139,
           categories[2],
+          'potion_of_speed.jpg',
           callback
         );
       },
@@ -247,6 +264,7 @@ function createItems(cb) {
           'You can breathe underwater for 1 hour after drinking this potion. Its cloudy green fluid smells of the sea and has a jellyfish-like bubble floating in it.',
           75,
           categories[2],
+          'potion_of_waterbreathing.jpg',
           callback
         );
       },
@@ -256,6 +274,7 @@ function createItems(cb) {
           'This concoction looks, smells, and tastes like a potion of healing or other beneficial potion. However, it is actually poison masked by illusion magic. An identify spell reveals its true nature.',
           99,
           categories[2],
+          'potion_of_poison.jpg',
           callback
         );
       },
@@ -265,6 +284,7 @@ function createItems(cb) {
           'This ring has 3 charges, and it regains 1d3 expended charges daily at dawn. When you fail a Dexterity saving throw while wearing it, you can use your reaction to expend 1 of its charges to succeed on that saving throw instead.',
           219,
           categories[3],
+          'ring_of_evasion.jpg',
           callback
         );
       },
@@ -274,6 +294,7 @@ function createItems(cb) {
           'While wearing this ring, you can turn invisible as an action. Anything you are wearing or carrying is invisible with you. You remain invisible until the ring is removed, until you attack or cast a spell, or until you use a bonus action to become visible again.',
           899,
           categories[3],
+          'ring_of_invisibility.jpg',
           callback
         );
       },
@@ -283,6 +304,7 @@ function createItems(cb) {
           'While wearing this ring, you can stand on and move across any liquid surface as if it were solid ground.',
           449,
           categories[3],
+          'ring_of_waterwalking.jpg',
           callback
         );
       },
@@ -292,6 +314,7 @@ function createItems(cb) {
           'While wearing this ring, you can cast the jump spell from it as a bonus action at will, but can target only yourself when you do so.',
           99,
           categories[3],
+          'ring_of_jumping.jpg',
           callback
         );
       },
@@ -301,6 +324,7 @@ function createItems(cb) {
           'This bag has an interior space considerably larger than its outside dimensions, roughly 2 feet in diameter at the mouth and 4 feet deep. The bag can hold up to 500 pounds, not exceeding a volume of 64 cubic feet. The bag weighs 15 pounds, regardless of its contents. Retrieving an item from the bag requires an action. If the bag is overloaded, pierced, or torn, it ruptures and is destroyed, and its contents are scattered in the Astral Plane. If the bag is turned inside out, its contents spill forth, unharmed, but the bag must be put right before it can be used again. Breathing creatures inside the bag can survive up to a number of minutes equal to 10 divided by the number of creatures (minimum 1 minute), after which time they begin to suffocate.',
           399,
           categories[4],
+          'bag_of_holding.jpg',
           callback
         );
       },
@@ -310,6 +334,7 @@ function createItems(cb) {
           'While wearing this amulet, you can use an action to name a location that you are familiar with on another plane of existence. Then make a DC 15 Intelligence check. On a successful check, you cast the plane shift spell. On a failure, you and each creature and object within 15 feet of you travel to a random destination. Roll a d100. On a 1–60, you travel to a random location on the plane you named. On a 61–100, you travel to a randomly determined plane of existence.',
           799,
           categories[4],
+          'amulet_of_the_planes.jpg',
           callback
         );
       },
@@ -319,6 +344,7 @@ function createItems(cb) {
           "This gem contains a mote of elemental energy. When you use an action to break the gem, an elemental is summoned as if you had cast the conjure elemental spell, and the gem's magic is lost. The type of gem determines the elemental summoned by the spell.",
           105,
           categories[4],
+          'elemental_gem.jpg',
           callback
         );
       },
@@ -328,6 +354,7 @@ function createItems(cb) {
           'While wearing this helm, you can use an action to cast the comprehend languages spell from it at will.',
           699,
           categories[4],
+          'helm_of_brilliance.jpg',
           callback
         );
       },

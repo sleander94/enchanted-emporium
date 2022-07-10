@@ -2,7 +2,7 @@ extends layout
 
 block content   
     h2= title 
-    form(action="" method="POST") 
+    form(action="" method="POST" enctype="multipart/form-data") 
       div(class="form-label") 
         label(for="name") Name: 
         input#name(type="text", placeholder="Name of item" name="name" required="true" value=(undefined===item ? "" : item.name) ) 
@@ -17,6 +17,9 @@ block content
         select#category(type="select" name="category" required='true') 
           for category in categories
               option(value=category._id) #{category.name}
+      div(class="form-label") 
+        label(for="image") Image: 
+        input#name(type="file" name="image" required="true" value=(undefined===item ? "" : item.image) )
       button#submit(type="submit") Submit
     if errors 
       ul 
