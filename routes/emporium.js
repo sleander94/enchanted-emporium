@@ -20,4 +20,5 @@ router.get('/items', item_controller.items);
 router.get('/categories/create', category_controller.category_create_get);
 router.post('/categories/create', category_controller.category_create_post);
 router.get('/categories/:id', category_controller.category_info);
+router.post('/categories/:id', category_controller.category_delete_post);
 module.exports = router;
