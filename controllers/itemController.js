@@ -54,6 +54,38 @@ exports.item_info = function (req, res, next) {
   );
 };
 
+exports.item_info_post = [
+  (req, res, next) => {
+    if (req.body.quantity > 0) {
+      for (let i = 0; i < req.body.quantity; i++) {
+        const iteminstance = new Iteminstance({
+          item: req.params.id,
+        });
+        iteminstance.save(function (err) {
+          if (err) {
+            return next(err);
+          }
+        });
+      }
+    }
+    if (req.body.quantity < 0) {
+      for (let i = req.body.quantity; i < 0; i++) {
+        Iteminstance.findOneAndRemove({ item: req.params.id }).exec(function (
+          err,
+          results
+        ) {
+          if (err) {
+            return next(err);
+          }
+        });
+      }
+    }
+    setTimeout(function () {
+      res.redirect(`/emporium/item/${req.params.id}`);
+    }, 500);
+  },
+];
+
 exports.items = function (req, res, next) {
   Item.find({})
     .sort({ price: 1 })
