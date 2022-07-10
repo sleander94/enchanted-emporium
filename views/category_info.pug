@@ -5,3 +5,6 @@ block content
     h2= data.category_info.name 
     each item in data.items 
       a(href=`/emporium/item/${item._id}`) !{item.name} | !{item.price}
+    if data.items.length === 0
+      form(action="" method="POST")
+        button(type="submit") Delete Category
