@@ -1,10 +1,11 @@
 extends layout 
 
-block content 
-  div(class="items-list")
+block content
+  div(class="info-page")
     h2= data.category_info.name 
-    each item in data.items 
-      a(href=`/emporium/item/${item._id}`) !{item.name} | !{item.price}
-    if data.items.length === 0
-      form(action="" method="POST")
-        button(type="submit") Delete Category
+    div(class="items-list")
+      each item in data.items 
+        a(href=`/emporium/item/${item._id}`) !{item.name} - !{item.price} GP
+      if data.items.length === 0
+        form(action="" method="POST")
+          button(type="submit") Delete Category
