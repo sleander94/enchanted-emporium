@@ -59,9 +59,20 @@ nav .nav-links {
 }
 
 #content {
-  -ms-grid-column-align: center;
-      justify-self: center;
+  justify-self: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
   max-width: 800px;
+  padding-bottom: 36px;
 }
 
 .home {
@@ -85,7 +96,13 @@ nav .nav-links {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: 24px;
+  gap: 3rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .home .shop-categories a {
@@ -124,10 +141,20 @@ nav .nav-links {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  gap: 12px;
+  padding: 8px;
 }
 
 .create .form-label label {
   width: 20%;
+}
+
+.create .form-label input {
+  height: 1rem;
+}
+
+.create .form-label input[type='file'] {
+  height: 1.5rem;
 }
 
 .create .form-label input,
@@ -217,5 +244,39 @@ nav .nav-links {
 
 .item-info form input {
   width: 10%;
+}
+
+@media only screen and (max-width: 800px) {
+  nav {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #content {
+    margin-top: 6rem;
+  }
+  .shop-categories {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .create {
+    width: 100%;
+    min-width: 0px;
+  }
+  .item-info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 12px;
+  }
+  .item-info img {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 /*# sourceMappingURL=main.css.map */

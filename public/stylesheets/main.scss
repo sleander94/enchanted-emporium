@@ -51,7 +51,12 @@ nav {
 
 #content {
   justify-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
   max-width: 800px;
+  padding-bottom: 36px;
 }
 
 // index
@@ -64,7 +69,9 @@ nav {
   gap: 5rem;
   .shop-categories {
     display: flex;
-    gap: 24px;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
     a {
       font-size: 1.5rem;
     }
@@ -91,8 +98,16 @@ nav {
   min-width: 500px;
   .form-label {
     display: flex;
+    gap: 12px;
+    padding: 8px;
     label {
       width: 20%;
+    }
+    input {
+      height: 1rem;
+    }
+    input[type='file'] {
+      height: 1.5rem;
     }
     input,
     textarea,
@@ -151,6 +166,32 @@ nav {
     gap: 8px;
     input {
       width: 10%;
+    }
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  nav {
+    flex-direction: column;
+  }
+
+  #content {
+    margin-top: 6rem;
+  }
+  .shop-categories {
+    flex-wrap: wrap;
+  }
+  .create {
+    width: 100%;
+    min-width: 0px;
+  }
+  .item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    img {
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 }
