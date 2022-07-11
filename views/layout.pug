@@ -7,10 +7,13 @@ html(lang='en')
     link(rel='stylesheet', href='/stylesheets/main.css')
   body
     nav
-      h1 Enchanted Emporium
+      div(class="page-title")
+        img(src="/images/cauldron.png", alt="")
+        h1 Enchanted Emporium
       div(class="nav-links")
-        a(href="/emporium") Home
-        a(href="/emporium/items") All items
+        a(href="/emporium") Categories
+        a(href="/emporium/items") All Items
         a(href="/emporium/item/create") New Item   
+        a(href="/emporium/categories/create") New Category 
     section(id="content")
       block content
