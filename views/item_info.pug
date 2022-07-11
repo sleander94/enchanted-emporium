@@ -1,17 +1,18 @@
 extends layout
 
 block content
-  h2= data.item.name
-  img(src=`/images/${data.item.image}` alt='' class='item-image')
-  p= data.item.description 
-  div(class="stock-price")
-    p In stock: !{data.stock_count}
-    p Price: !{data.item.price} GP
-  form(action="" method="POST")  
-    label(for="quantity") Update Stock:
-    input(type="number" name="quantity" value="1")
-    button(type='submit') Submit
-  div(class="item-links")
-    a(href=`/emporium/item/${data.item._id}/update`) Update Item
-    a(href=`/emporium/item/${data.item._id}/delete`) Delete Item
-
+  div(class="item-info")
+    h2= data.item.name
+    img(src=`/images/${data.item.image}` alt='' class='item-image')
+    div(class="item-details")
+      p= data.item.description 
+      div(class="stock-price")
+        p In stock: !{data.stock_count}
+        p Price: !{data.item.price} GP
+      form(action="" method="POST")  
+        label(for="quantity") Change Stock:
+        input(type="number" name="quantity" value="1")
+        button(type='submit') Submit
+    div(class="item-links")
+      a(href=`/emporium/item/${data.item._id}/update`) Update Item
+      a(href=`/emporium/item/${data.item._id}/delete`) Delete Item
