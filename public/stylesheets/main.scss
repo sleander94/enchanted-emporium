@@ -1,0 +1,156 @@
+$primaryColor: #112d4e;
+$secondaryColor: #3f72af;
+$backgroundColor: #dbe2ef;
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Source Code Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: $backgroundColor;
+  color: $primaryColor;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 100px 1fr;
+}
+
+a {
+  text-decoration: none;
+  color: $secondaryColor;
+}
+
+h2 {
+  text-decoration: underline;
+  text-align: center;
+}
+
+// layout
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+  gap: 24px;
+  .page-title {
+    display: flex;
+    gap: 24px;
+    img {
+      width: 80px;
+      height: auto;
+    }
+  }
+  .nav-links {
+    display: flex;
+    gap: 12px;
+  }
+}
+
+#content {
+  justify-self: center;
+  max-width: 800px;
+}
+
+// index
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 3rem;
+  gap: 5rem;
+  .shop-categories {
+    display: flex;
+    gap: 24px;
+    a {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+// items
+.items-list {
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+  gap: 18px;
+  font-size: 1.5rem;
+  font-weight: normal;
+  text-align: center;
+}
+
+// forms
+.create {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 50%;
+  min-width: 500px;
+  .form-label {
+    display: flex;
+    label {
+      width: 20%;
+    }
+    input,
+    textarea,
+    select {
+      width: 80%;
+    }
+  }
+  button {
+    align-self: center;
+    width: 30%;
+  }
+}
+
+// item info
+.item-info {
+  display: grid;
+  grid: 6rem 1fr 6rem / 1fr 1fr;
+
+  h2 {
+    grid-area: 1 / 1 / 2 / 3;
+  }
+
+  .item-image {
+    grid-area: 2 / 1 / 3 / 2;
+    max-width: 400px;
+    height: auto;
+  }
+
+  .item-details {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    padding: 18px;
+  }
+
+  .stock-price,
+  .item-links {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .stock-price {
+    justify-content: space-around;
+  }
+
+  .item-links {
+    align-self: center;
+    grid-area: 3 / 1 / 4 / 3;
+  }
+
+  form {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    input {
+      width: 10%;
+    }
+  }
+}
