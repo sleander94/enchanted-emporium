@@ -135,7 +135,7 @@ exports.item_create_post = [
       description: req.body.description,
       price: req.body.price,
       category: req.body.category,
-      image: req.file.filename,
+      image: req.file ? req.file.filename : '',
     });
 
     if (!errors.isEmpty()) {
@@ -257,34 +257,44 @@ exports.item_update_post = [
   (req, res, next) => {
     const errors = validationResult(req);
 
-    const item = new Item({
-      name: req.body.name,
-      description: req.body.description,
-      price: req.body.price,
-      category: req.body.category,
-      _id: req.params.id,
-    });
-
-    if (!errors.isEmpty()) {
-      Category.find({}).exec(function (err, results) {
-        if (err) {
-          return next(err);
-        }
-        res.render('item_form', {
-          title: 'Update Item',
-          categories: results,
-          item: item,
-          errors: errors.array(),
+    Item.findById(req.params.id).exec(function (err, results) {
+      if (err) {
+        return next(err);
+      }
+      const item = new Item({
+        name: req.body.name,
+        description: req.body.description,
+        price: req.body.price,
+        category: req.body.category,
+        image: req.file ? req.file.filename : results.image,
+        _id: req.params.id,
+      });
+      if (!errors.isEmpty()) {
+        Category.find({}).exec(function (err, results) {
+          if (err) {
+            return next(err);
+          }
+          res.render('item_form', {
+            title: 'Update Item',
+            categories: results,
+            item: item,
+            errors: errors.array(),
+          });
         });
-      });
-      return;
-    } else {
-      Item.findByIdAndUpdate(req.params.id, item, {}, function (err, theitem) {
-        if (err) {
-          return next(err);
-        }
-        res.redirect(theitem.url);
-      });
-    }
+        return;
+      } else {
+        Item.findByIdAndUpdate(
+          req.params.id,
+          item,
+          {},
+          function (err, theitem) {
+            if (err) {
+              return next(err);
+            }
+            res.redirect(theitem.url);
+          }
+        );
+      }
+    });
   },
 ];
