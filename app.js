@@ -1,3 +1,4 @@
+require('dotenv').config();
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -8,11 +9,13 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var emporiumRouter = require('./routes/emporium');
 
+var compression = require('compression');
+var helmet = require('helmet');
+
 var app = express();
 
 var mongoose = require('mongoose');
-var dev_db_url =
-  'mongodb+srv://stevo5563:urmom123@cluster0.k91vh.mongodb.net/enchanted_emporium?retryWrites=true&w=majority';
+var dev_db_url = `mongodb+srv://${process.env.DEVUSER}:${process.env.DEVPASS}@cluster0.k91vh.mongodb.net/enchanted_emporium?retryWrites=true&w=majority`;
 var mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
@@ -26,6 +29,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(compression());
+app.use(helmet());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
