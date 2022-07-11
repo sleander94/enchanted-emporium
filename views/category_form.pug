@@ -2,7 +2,7 @@ extends layout
 
 block content   
     h2= title 
-    form(action="" method="POST") 
+    form(action="" method="POST" class="create") 
       div(class="form-label") 
         label(for="name") Name: 
         input#name(type="text", placeholder="Name of category" name="name" required="true") 
