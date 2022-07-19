@@ -1,4 +1,4 @@
-# Enchanted Emporium
+# Enchanted Emporium 🪄
 
 Inventory management CRUD app for magical fantasy items.
 
